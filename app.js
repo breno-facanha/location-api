@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('API de Geocodificação');
+});
+
 app.post('/geocode', async (req, res) => {
     const { address } = req.body;
     console.log('Endereço recebido:', address);
