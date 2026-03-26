@@ -1,12 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
 app.post('/geocode', async (req, res) => {
+    const { address } = req.body;
+    console.log('Endereço recebido:', address);
   try {
-    const { address } = req.query;
 
     if (!address) {
       return res.status(400).json({
